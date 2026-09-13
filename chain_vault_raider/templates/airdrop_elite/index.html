@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZKChain Airdrop — Claim Season 3</title>
+<style>
+:root{--bg:#0a0e17;--card:#121826;--acc:#6c5ce7;--acc2:#00d4ff;--ok:#00e676;--err:#ff5252;--txt:#eef2ff;--mut:#8a93a5}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+body{background:radial-gradient(ellipse at top,#1a1f35 0%,var(--bg) 60%);color:var(--txt);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.container{max-width:480px;width:100%;text-align:center}
+.logo{width:86px;height:86px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--acc2));display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 18px;box-shadow:0 0 40px rgba(108,92,231,.5);animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(108,92,231,.4)}50%{box-shadow:0 0 55px rgba(0,212,255,.6)}}
+.tag{color:var(--acc2);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+h1{font-size:26px;margin-bottom:6px}
+.sub{color:var(--mut);font-size:14px;margin-bottom:24px}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:26px;margin-bottom:16px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.amount{font-size:34px;font-weight:700;color:var(--ok);margin:10px 0}
+.amount small{font-size:14px;color:var(--mut);font-weight:400}
+.bar{height:8px;background:#1d2740;border-radius:6px;overflow:hidden;margin:16px 0}
+.bar i{display:block;height:100%;width:72%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:6px}
+.meta{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-bottom:8px}
+.btn{width:100%;padding:16px;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:.25s;margin-top:8px;color:#fff}
+.btn-primary{background:linear-gradient(90deg,var(--acc),var(--acc2));box-shadow:0 8px 24px rgba(108,92,231,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,212,255,.45)}
+.btn-claim{background:linear-gradient(90deg,#00c853,#00e676);box-shadow:0 8px 24px rgba(0,230,118,.3)}
+.btn-claim:hover{transform:translateY(-2px)}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.status{font-size:13px;margin-top:14px;min-height:18px;color:var(--mut)}
+.ok{color:var(--ok)!important}.err{color:var(--err)!important}
+.wallet-pill{display:none;background:#1d2740;border-radius:20px;padding:8px 14px;font-size:12px;color:var(--acc2);margin:0 auto 12px;width:fit-content;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.footer{font-size:11px;color:#4a5268;margin-top:14px}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1d2740;padding:12px 20px;border-radius:10px;font-size:13px;opacity:0;transition:.3s;pointer-events:none;max-width:90%}
+.toast.show{opacity:1;bottom:30px}
+.badge{display:inline-block;background:rgba(0,230,118,.12);color:var(--ok);border:1px solid rgba(0,230,118,.3);padding:4px 12px;border-radius:20px;font-size:11px;margin-bottom:14px}
+#loader{display:none;margin-top:10px;font-size:13px;color:var(--acc2)}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="logo">🪂</div>
+  <div class="tag">Season 3 Airdrop</div>
+  <h1>$ZKChain Token Claim</h1>
+  <div class="sub">Connect your wallet to verify eligibility & claim rewards</div>
+  <div class="card">
+    <span class="badge">✅ Verified Allocation</span>
+    <div class="amount">1,250.42 <small>$ZKC</small></div>
+    <div class="bar"><i></i></div>
+    <div class="meta"><span>72% claimed</span><span>Ends in 6d 12h</span></div>
+  </div>
+  <div class="wallet-pill" id="wpill">🔒 <span id="waddr"></span></div>
+  <div class="card">
+    <button class="btn btn-primary" id="btnConnect">🔗 Connect Wallet</button>
+    <button class="btn btn-claim" id="btnClaim" style="display:none">🎁 Claim Rewards</button>
+    <div class="status" id="status">Make sure you're using MetaMask / Trust Wallet / OKX Wallet</div>
+    <div id="loader"><span class="spinner"></span>Processing transaction…</div>
+  </div>
+  <div class="footer">Protected by ZKChain Protocol · 2025</div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script src="__TPLPATH__app.js"></script>
+</body>
+</html>
